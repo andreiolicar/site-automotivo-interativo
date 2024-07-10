@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+header {
+    position: fixed;
+    width: 80vw;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 600px;
+    gap: 10%;
+    z-index: 2;
+}
+
+header img {
+    width: 250px;
+}
+
+header nav ul {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+
+    ::marker {
+        color: rgba(255, 255, 255, 0);
+    }
+}
+
+section {
+    background-image: radial-gradient(#7f3d9e, #6d00d9);
+    height: 100vh;
+    position: relative;
+}
+
+section .lista {
+    width: 70vw;
+    height: 100%;
+    margin: auto;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: 200px;
+        width: 100%;
+        top: 50%;
+        border-top: 1px solid white;
+    }
+}
+
+section .lista .item {
+    position: absolute;
+    inset: 0;
+}
+
+section .lista .item .img-carro {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60%;
+}
+
+section .lista .item .img-carro .red {
+    width: 100%;
+    transform: rotate(-20deg);
+}
+
+section .lista .item .conteudo {
+    position: absolute;
+    right: 100px;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    gap: 20px;
+}
+
+section .setas {
+    width: 70vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -25px);
+    display: flex;
+    justify-content: space-between;
+
+    & :hover {
+        background-color: #beff1b;
+    }
+
+    & button:nth-child(1) {
+        & img {
+            transform: scale(-1);
+        }
+
+    }
+
+    & button {
+        top: 60%;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+
+        & img {
+            width: 30px;
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+
+    }
+}
+
+section .lista .item .conteudo .informações-carro {
+    font-weight: bold;
+}
+
+section .lista .item .conteudo .titulo-carro {
+    font-size: 8em;
+    line-height: 1em;
+    font-family: "League Gothic", sans-serif;
+    letter-spacing: 3px;
+}
+
+section .lista .item .conteudo .descrição {
+    color: #e0e0e0;
+    font-size: 12px;
+    text-align: right;
+    max-width: 400px;
+}
+
+section .lista .item .conteudo .botão-informação {
+    border-radius: 10px;
+    height: 40px;
+    width: 150px;
+    text-transform: uppercase;
+    border: 2px solid #791fd3;
+    background-color: #beff1b;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    font-weight: 750;
+    font-style: normal;
+    cursor: pointer;
+}
+
+section .indicadores {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 200px;
+    width: 90vw;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 15px;
+}
+
+section .indicadores .números {
+    font-size: 5em;
+    font-family: "League Gothic", sans-serif;
+}
+
+section .indicadores ul {
+    display: flex;
+    gap: 10px;
+
+    ::marker {
+        color: rgba(255, 255, 255, 0);
+    }
+
+    & li {
+        width: 50px;
+        height: 5px;
+        background-color: #beff1b;
+        border-radius: 5px;
+        transition: 0.5s;
+    }
+
+    & .active {
+        background-color: white;
+    }
+}
+
+section {
+
+    & .lista {
+
+        & .item {
+            transform: translateX(100vw);
+            transition: 0.5s;
+            opacity: 0;
+
+            & .img-carro {
+                & img {
+                    transform: rotate(0);
+                    transition: 0.5s;
+                    transition-delay: 0.3s;
+
+                }
+            }
+
+            & .conteudo {
+
+                & .informações-carro,
+                .titulo-carro,
+                .descrição,
+                .informações-carro {
+                    transform: translateX(200px);
+                    transition: 0.7s;
+                    transition-delay: 0.3s;
+                    opacity: 0;
+                }
+
+                & .titulo-carro {
+                    transition-delay: 0.5s;
+                }
+
+                & .descrição {
+                    transition-delay: 0.7s;
+                }
+
+                & .informações-carro {
+                    transition-delay: 0.9s;
+                }
+            }
+            
+        }
+
+        & .active {
+            transform: translateX(0);
+            transition: 0.5s;
+            opacity: 1;
+
+            & .conteudo {
+
+                & .informações-carro,
+                .titulo-carro,
+                .descrição,
+                .informações-carro {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+
+            & .img-carro {
+                & .red {
+                    transform: rotate(-20deg);
+                }
+            }
+        }
+    }
+}
